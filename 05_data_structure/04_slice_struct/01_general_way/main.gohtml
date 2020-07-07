@@ -4,6 +4,10 @@
         <title>hello world</title>
     </head>
     <body>
-        <h1>the meaning of life : {{.}}
+        <ul>
+            {{range .}}
+            <li>{{.Country}}  -  {{.Name}}</li>
+            {{end}}
+            </ul>
     </body>
 </html>

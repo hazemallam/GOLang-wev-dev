@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>hello world</title>
+    </head>
+    <body>
+        <ul>
+            {{range .Wisdom}}
+            <li>{{.Name}}  -  {{.Motto}}</li>
+            {{end}}
+        </ul>
+
+        <ul>
+            {{range .Transport}}
+            <li>{{.Manufacture}}  -  {{.Model}}  -  {{.Doors}}</li>
+            {{end}}
+        </ul>
+
+    </body>
+</html>
