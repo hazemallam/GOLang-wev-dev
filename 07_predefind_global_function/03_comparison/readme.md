@@ -1,7 +1,7 @@
 #comparison operator in template
 
-    ```
-    eq
+```
+     eq
     - Returns the boolean truth of arg1 == arg2
 
     ne
@@ -18,8 +18,7 @@
 
     ge
     - Returns the boolean truth of arg1 >= arg2
-    
-    ```
+```
 
 source:
 https://godoc.org/text/template#Functions
