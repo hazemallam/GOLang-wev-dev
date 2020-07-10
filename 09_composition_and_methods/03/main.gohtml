@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>composition and methods</title>
+    </head>
+    <body>
+        {{.Fall.Term}}
+        {{range .Fall.Courses}}
+            {{.Name}} - {{.Number}} - {{.Unit}}
+        {{end}}
+
+        {{.Spring.Term}}
+        {{range .Spring.Courses}}
+            {{.Name}} - {{.Number}} - {{.Unit}}
+        {{end}}
+    </body>
+</html>
