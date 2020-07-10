@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>hands on 3</title>
+    </head>
+    <body>
+        {{range .}}
+            {{.Meal}}
+            {{range .Item}}
+                {{.Name}}
+                {{.Descrip}}
+                {{.Price}}
+            {{end}}  
+        {{end}}
+    </body>
+</html>
