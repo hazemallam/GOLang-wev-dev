@@ -20,7 +20,7 @@ func main(){
 			log.Println(err)
 			continue
 		}
-		io.WriteString(con, "\nHello from tcp server")
+		io.WriteString(con, "\nHello from tcp server\n")
 		fmt.Fprintln(con, "How is your day?")
 		fmt.Fprintf(con, "%v", "Well, I hope!")
 		con.Close()
