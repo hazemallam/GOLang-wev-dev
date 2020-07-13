@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>URL</title>
+    </head>
+    <body>
+        {{if .Method}}
+            <h2>the request method is : {{.Method}}</h2>
+        {{end}}
+        {{if .URL}}
+            <h2>the URL is : {{.URL}}</h2>
+            <ul>
+                <li>Scheme: {{.URL.Scheme}}</li>
+                <li>Opaque: {{.URL.Opaque}}</li>
+                <li>Host: {{.URL.Host}}</li>
+                <li>Path: {{.URL.Path}}</li>
+                <li>RawPath: {{.URL.RawPath}}</li>
+                <li>ForceQuery: {{.URL.ForceQuery}}</li>
+                <li>RawQuery: {{.URL.RawQuery}}</li>
+                <li>Fragment: {{.URL.Fragment}}</li>
+            </ul>
+        {{end}}
+        {{if .Submissions}}
+            {{range $key, $value := .Submissions}}
+                <p><strong>{{$key}}</strong></p>
+                {{range $value}}
+                    <ul>
+                        <li>
+                            {{.}}
+                        </li>
+                    </ul>
+                {{end}}
+            {{end}}
+        {{end}}
+        <form action="/" method="POST">
+            <input type="text" name="fname" placeholder="type your name">
+            <input type="submit" name="btn-submit" value="send">
+        </form>
+    </body>
+</html>
