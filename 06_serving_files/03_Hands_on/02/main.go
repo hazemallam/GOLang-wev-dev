@@ -6,17 +6,23 @@ import (
 	"net/http"
 )
 
+var tpl *template.Template
+
+func init() {
+	tpl = template.Must(template.ParseFiles("index.html"))
+}
 func main() {
-	http.Handle("/", http.FileServer(http.Dir("./resources")))
-	http.HandleFunc("/dog/", dog)
+	fs := http.FileServer(http.Dir("resources"))
+	http.Handle("/images/", fs)
+	http.HandleFunc("/", dog)
 	log.Fatal(http.ListenAndServe(":5050", nil))
 
 }
 
 func dog(res http.ResponseWriter, req *http.Request) {
-	tpl, err := template.ParseFiles("./resources/html/index.html")
+	err := tpl.Execute(res, nil)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalln("error occured during executing file", err)
 	}
-	tpl.ExecuteTemplate(res, "./resources/html/index.html", nil)
+
 }
