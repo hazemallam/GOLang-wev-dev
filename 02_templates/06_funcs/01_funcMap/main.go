@@ -6,8 +6,8 @@ import (
 	"strings"
 	"text/template"
 )
-var tpl *template.Template
 
+var tpl *template.Template
 
 // create a FuncMap to register functions.
 // "uc" is what the func will be called in the template
@@ -16,36 +16,35 @@ var tpl *template.Template
 // "ft" slices a string, returning the first three characters
 
 var fm = template.FuncMap{
-	"uc" : strings.ToUpper,
-	"ft" : FirstThree,
-	
+	"uc": strings.ToUpper,
+	"ft": FirstThree,
 }
 
-type sage struct{
-	Name string
+type sage struct {
+	Name  string
 	Motto string
 }
 
-type car struct{
+type car struct {
 	Manufacturer string
-	Model string
-	Doors int
+	Model        string
+	Doors        int
 }
 
-func FirstThree(s string) string{
+func FirstThree(s string) string {
 	s = strings.TrimSpace(s)
-	if len(s) > 3{
+	if len(s) > 3 {
 		s = s[:3]
 	}
 	return s
 }
 
-func init(){
+func init() {
 	tpl = template.Must(template.New("").Funcs(fm).ParseFiles("main.gohtml"))
-	
+
 }
 
-func main(){
+func main() {
 	b := sage{
 		Name:  "Buddha",
 		Motto: "The belief of no beliefs",
@@ -76,21 +75,21 @@ func main(){
 	sages := []sage{b, g, m}
 	cars := []car{f, c}
 
-	data := struct{
-		Wisdom []sage
+	data := struct {
+		Wisdom    []sage
 		Transport []car
 	}{
 		sages,
 		cars,
 	}
 	fileCreated, err := os.Create("index.html")
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error creating file", err)
 	}
 	defer fileCreated.Close()
 
 	err = tpl.ExecuteTemplate(fileCreated, "main.gohtml", data)
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error occured", err)
 	}
 }

@@ -1,39 +1,38 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
 var tpl *template.Template
 
-type person struct{
+type person struct {
 	Name string
-	Age int
+	Age  int
 }
 
-type doubleZero struct{
+type doubleZero struct {
 	person
 	LicenceToKill bool
-
 }
 
-func init(){
+func init() {
 	tpl = template.Must(template.ParseFiles("main.gohtml"))
 }
 
-func main(){
+func main() {
 	p1 := doubleZero{
-		person : person{
-			Name : "James Bond",
-			Age : 42,
+		person: person{
+			Name: "James Bond",
+			Age:  42,
 		},
-		LicenceToKill : false,
+		LicenceToKill: false,
 	}
 
 	err := tpl.Execute(os.Stdout, p1)
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error occured", err)
 	}
 }

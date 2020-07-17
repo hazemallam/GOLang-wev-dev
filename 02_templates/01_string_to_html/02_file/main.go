@@ -1,13 +1,14 @@
 package main
 
 import (
-	"strings"
+	"fmt"
 	"io"
 	"log"
 	"os"
-	"fmt"
+	"strings"
 )
-func main(){
+
+func main() {
 	name := "James Bond"
 	str := fmt.Sprint(
 		`<!DOCTYPE html>
@@ -16,12 +17,12 @@ func main(){
 		<title>Hello world</title>
 		</head>
 		<body>
-		<h1>`+ name +`</h1>
+		<h1>` + name + `</h1>
 		</body>
 		</html>
 	`)
 	fileCreated, err := os.Create("index.html")
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error creating file", err)
 	}
 	defer fileCreated.Close()

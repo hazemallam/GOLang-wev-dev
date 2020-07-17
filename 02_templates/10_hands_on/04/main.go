@@ -1,24 +1,24 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
-type item struct{
+type item struct {
 	Name, Descrip string
-	Price float64
+	Price         float64
 }
 
-type meal struct{
+type meal struct {
 	Meal string
 	Item []item
 }
 
 type menu []meal
 
-type resturant struct{
+type resturant struct {
 	Name string
 	Menu menu
 }
@@ -27,11 +27,11 @@ type resturants []resturant
 
 var tpl *template.Template
 
-func init(){
+func init() {
 	tpl = template.Must(template.ParseFiles("main.gohtml"))
 }
 
-func main(){
+func main() {
 	m := resturants{
 		resturant{
 			Name: "Federicos",
@@ -165,7 +165,7 @@ func main(){
 		},
 	}
 	err := tpl.Execute(os.Stdout, m)
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error occured", err)
 	}
 }

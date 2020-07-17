@@ -1,7 +1,8 @@
 package main
 
 import "fmt"
-func main(){
+
+func main() {
 	name := "James Bond"
 
 	template := `
@@ -11,7 +12,7 @@ func main(){
 	<title>Hello world</title>
 	</head>
 	<body>
-	<h1>`+ name +`</h1>
+	<h1>` + name + `</h1>
 	</body>
 	</html>
 	`

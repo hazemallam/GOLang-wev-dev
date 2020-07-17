@@ -1,21 +1,20 @@
 package main
 
 import (
-	"os"
 	"log"
+	"os"
 	"text/template"
-	
 )
 
 var tpl *template.Template
 
-func init(){
+func init() {
 	tpl = template.Must(template.ParseFiles("main.gohtml"))
 }
 
-func main(){
+func main() {
 	err := tpl.ExecuteTemplate(os.Stdout, "main.gohtml", 42)
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error", err)
 	}
 }

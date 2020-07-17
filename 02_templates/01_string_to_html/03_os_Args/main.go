@@ -1,13 +1,14 @@
 package main
 
 import (
-	"strings"
+	"fmt"
 	"io"
 	"log"
 	"os"
-	"fmt"
+	"strings"
 )
-func main(){
+
+func main() {
 	name := os.Args[1]
 	fmt.Println(os.Args[0])
 	fmt.Println(os.Args[1])
@@ -18,12 +19,12 @@ func main(){
 		<title>Hello world</title>
 		</head>
 		<body>
-		<h1>`+ name +`</h1>
+		<h1>` + name + `</h1>
 		</body>
 		</html>
 	`)
 	fileCreated, err := os.Create("index.html")
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error creating file", fileCreated)
 	}
 	io.Copy(fileCreated, strings.NewReader(str))

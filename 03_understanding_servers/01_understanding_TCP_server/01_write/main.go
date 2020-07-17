@@ -7,16 +7,16 @@ import (
 	"net"
 )
 
-func main(){
+func main() {
 	li, err := net.Listen("tcp", ":5050")
-	if err != nil{
+	if err != nil {
 		log.Fatalln(err)
 	}
 	defer li.Close()
 
 	for {
 		con, err := li.Accept()
-		if err != nil{
+		if err != nil {
 			log.Println(err)
 			continue
 		}

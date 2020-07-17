@@ -1,43 +1,43 @@
 package main
 
 import (
-	"text/template"
-	"os"
 	"log"
+	"os"
+	"text/template"
 )
 
-type person struct{
+type person struct {
 	Name string
-	Age int
+	Age  int
 }
 
-func (p person) SomeProcessing() int{
+func (p person) SomeProcessing() int {
 	return 7
 }
 
-func (p person) AgeDbl() int{
+func (p person) AgeDbl() int {
 	return p.Age * 2
 }
 
 func (p person) TakesArg(x int) int {
 	return x * 2
-} 
+}
 
 var tpl *template.Template
 
-func init(){
+func init() {
 	tpl = template.Must(template.ParseFiles("main.gohtml"))
 }
 
-func main(){
+func main() {
 
 	p := person{
-		Name : "James",
-		Age : 42,
+		Name: "James",
+		Age:  42,
 	}
 
 	err := tpl.Execute(os.Stdout, p)
-	if err != nil{
+	if err != nil {
 		log.Fatalln("error occured", err)
 	}
 }
