@@ -1,0 +1,13 @@
+{{template "header"}}
+    <form method="POST">
+        <input type="text" name="fname" placeholder="first name"><br>
+        <input type="text" name="lname" placeholder="last name"><br>
+        <input type="checkbox" name="subscribe"><br>
+        <input type="submit"> 
+    </form>
+    {{if .}}
+        <h2>{{.FirstName}}</h2>
+        <h2>{{.LastName}}</h2>
+        <h2>{{.Sub}}</h2>
+    {{end}}
+{{template "footer"}}
