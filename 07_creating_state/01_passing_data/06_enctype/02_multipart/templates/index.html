@@ -1,0 +1,20 @@
+{{template "header"}}
+<form method="POST" enctype="multipart/form-data">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="fname">
+    <br>
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lname">
+    <br>
+    <label for="sub">Subscribes</label>
+    <input type="checkbox" id="sub" name="sub">
+    <br>
+    <label for="file">CHoose File</label>
+    <input type="file" id="file" name="cv">
+    <br>
+    <input type="submit" value="send">
+</form>
+{{if .}}
+    <h2>Body: {{.}}</h2>
+{{end}}
+{{template "footer"}}
