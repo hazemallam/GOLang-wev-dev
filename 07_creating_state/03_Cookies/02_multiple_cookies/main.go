@@ -11,6 +11,7 @@ func main() {
 	http.HandleFunc("/", set)
 	http.HandleFunc("/multiple", multiple)
 	http.HandleFunc("/read", read)
+	http.HandleFunc("/readall", readAll)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	log.Fatalln(http.ListenAndServe(":5050", nil))
 
@@ -56,5 +57,12 @@ func read(res http.ResponseWriter, req *http.Request) {
 		log.Println(err)
 	} else {
 		fmt.Fprintln(res, "YOUR COOKIE #3 : ", cookie)
+	}
+}
+
+func readAll(res http.ResponseWriter, req *http.Request) {
+	c := req.Cookies()
+	for i, v := range c {
+		fmt.Fprintf(res, "YOUR COOKIE %v# = %v\n\n", i, v)
 	}
 }
