@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func main(){
+func main() {
 	http.HandleFunc("/", set)
 	http.HandleFunc("/read", read)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
@@ -13,15 +13,15 @@ func main(){
 
 }
 
-func set(res http.ResponseWriter, req *http.Request){
+func set(res http.ResponseWriter, req *http.Request) {
 	http.SetCookie(res, &http.Cookie{
-		Name: "my-cookie",
+		Name:  "my-cookie",
 		Value: "some-value",
 	})
 	fmt.Fprintln(res, "COOKIE WRITEN-CHECK YOUR BROWSER")
 }
 
-func read(res http.ResponseWriter, req *http.Request){
+func read(res http.ResponseWriter, req *http.Request) {
 	cookie, err := req.Cookie("my-cookie")
 	if err != nil {
 		http.Error(res, err.Error(), http.StatusNoContent)
