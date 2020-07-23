@@ -34,6 +34,13 @@ func init() {
 }
 
 func main() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/bar", bar)
+	http.HandleFunc("/signup", signup)
+	http.HandleFunc("/login", login)
+	http.HandleFunc("/logout", logout)
+	http.Handle("/favicon.ico", http.NotFoundHandler())
+	http.ListenAndServe(":5050", nil)
 
 }
 
